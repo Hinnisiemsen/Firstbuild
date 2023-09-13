@@ -4,6 +4,15 @@ import java.util.Random;
 public class DiffieHellmann {
     private int p;
     private int q;
+    public void generateP() {
+        Random random = new Random();
+        int nextP = random.nextInt();
+        if (millerRabinTest(nextP)) {
+            p = nextP;
+        } else {
+            generateP();
+        }
+    }
     public boolean millerRabinTest(int n) {
         // Wähle zufällige Zahl 1 < a < n
         Random random = new Random();
