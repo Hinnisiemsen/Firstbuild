@@ -15,8 +15,8 @@ public class DiffieHellmann {
         }
 
         // Zerlege n-1 in eine Zweierpotenz und einen ungeraden Faktor
-        int s = (ggT(n-1,2)); // Ungerader Faktor
-        int r = (n-1)/(ggT(n-1,2)); // Zweierpotenz
+        int s = ungeraderFaktor(n-1); // Ungerader Faktor
+        int r = zweierPotenzExponent(n-1); // Zweierpotenz
 
         ArrayList<Integer> ergebnisse = new ArrayList<>();
 
@@ -45,6 +45,41 @@ public class DiffieHellmann {
             kleinereZahl = rest;
         }
         return groeßereZahl;
+    }
+
+
+    public int ungeraderFaktor(int n) {
+        ArrayList<Integer> primFaktoren = primeFactors(n);
+        int ungeraderFaktor = primFaktoren.get(0);
+
+        for (int i = 1; i < primFaktoren.size(); i++) {
+            if (primFaktoren.get(i) > ungeraderFaktor && (primFaktoren.get(i) % 2) != 0) {
+                ungeraderFaktor = primFaktoren.get(i);
+            }
+        }
+        return ungeraderFaktor;
+    }
+    public int zweierPotenzExponent(int n) {
+        ArrayList<Integer> primFaktoren = primeFactors(n);
+        int zweierPotenz = 1;
+
+        for (int primfaktor: primFaktoren) {
+            if (primfaktor == 2) {
+                zweierPotenz *= 2;
+            }
+        }
+        int zweierPotenzExponent = (int) ((int) Math.log(zweierPotenz)/Math.log(2));
+        return zweierPotenzExponent;
+    }
+    public ArrayList<Integer> primeFactors(int zahl) {
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 2; i <= zahl; i++) {
+            while (zahl % i == 0) {
+                result.add(i);
+                zahl /= i;
+            }
+        }
+        return result;
     }
 
 }

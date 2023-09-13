@@ -13,7 +13,7 @@ public class Main {
         Point punkt2 = new Point(5, 1);
         System.out.println(punkt.isOnXAxis());
         System.out.println(punkt2.isOnXAxis());
-*/
+*//*
         byte[] scanline = new byte[1];
         scanline[0] = 0;
         for (int i = 0; i < scanline.length-i-2; i += 3) {
@@ -24,9 +24,11 @@ public class Main {
         wörter[0] = "Leandro";
         wörter[2] = "Tjorven";
 
+        */
+        DiffieHellmann test = new DiffieHellmann();
 
-
-       printArrayElements(wörter);
+        System.out.println(test.millerRabinTest(13));
+     //  printArrayElements(wörter);
     }
     public static void printArrayElements(String[] wörterbruder) {
         for (String wort: wörterbruder) {
