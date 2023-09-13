@@ -22,6 +22,10 @@ public class DiffieHellmann {
 
         ArrayList<Integer> ergebnisse = new ArrayList<>();
 
+        for (int i = 0; i <= r; i++) {
+            ergebnisse.add((int) (Math.pow(a,(Math.pow(2,i)*s)))%n);
+        }
+
     }
     public int ggT(int zahl1, int zahl2) {
         int rest = 1;
