@@ -68,7 +68,7 @@ public class DiffieHellmann {
                 zweierPotenz *= 2;
             }
         }
-        int zweierPotenzExponent = (int) ((int) Math.log(zweierPotenz)/Math.log(2));
+        int zweierPotenzExponent = (int) (Math.log(zweierPotenz)/Math.log(2));
         return zweierPotenzExponent;
     }
     public ArrayList<Integer> primeFactors(int zahl) {

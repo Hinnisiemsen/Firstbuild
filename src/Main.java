@@ -27,7 +27,7 @@ public class Main {
         */
         DiffieHellmann test = new DiffieHellmann();
 
-        System.out.println(test.millerRabinTest(13));
+        System.out.println(test.millerRabinTest(71));
      //  printArrayElements(wörter);
     }
     public static void printArrayElements(String[] wörterbruder) {
