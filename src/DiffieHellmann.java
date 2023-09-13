@@ -24,7 +24,6 @@ public class DiffieHellmann {
             ergebnisse.add((int) (Math.pow(a,(Math.pow(2,i)*s)))%n);
             if (ergebnisse.get(i) == 1) {
                 return true;
-                break;
             }
         }
         return false;
