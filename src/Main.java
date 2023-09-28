@@ -7,7 +7,7 @@ public class Main {
         // IntelliJ IDEA suggests fixing it.
 
         Zahlen zahl = new Zahlen(4402, 395);
-       // System.out.println(zahl.ggT(420, 49));
+        // System.out.println(zahl.ggT(420, 49));
 /*
         Point punkt = new Point(5, 0);
         Point punkt2 = new Point(5, 1);
@@ -25,16 +25,11 @@ public class Main {
         wörter[2] = "Tjorven";
 
         */
-        DiffieHellmann test = new DiffieHellmann();
+        // DiffieHellmann test = new DiffieHellmann();
 
-        System.out.println(test.millerRabinTest(71));
-     //  printArrayElements(wörter);
-    }
-    public static void printArrayElements(String[] wörterbruder) {
-        for (String wort: wörterbruder) {
-            if (wort != null) {
-                System.out.println(wort);
-            }
-        }
+        // System.out.println(test.millerRabinTest(71));
+        Kata test = new Kata();
+
+        System.out.println(test.add("1", "1"));
     }
 }
