@@ -213,4 +213,41 @@ public class Kata {
 
         return Arrays.toString(result);
     }
+    public static String[] whoEatsWho(final String zoo) {
+        HashMap<String, String> fressen = new HashMap<>();
+        fressen.put("antelope", "grass");
+        fressen.put("big-fish", "little-fish");
+        fressen.put("bug", "leaves");
+        fressen.put("bear", "big-fish bug chicken cow leaves sheep");
+        fressen.put("chicken", "bug");
+        fressen.put("cow", "grass");
+        fressen.put("fox", "chicken sheep");
+        fressen.put("giraffe", "leaves");
+        fressen.put("lion", "antelope cow");
+        fressen.put("panda", "leaves");
+        fressen.put("sheep", "grass");
+
+        String[] tiere = zoo.split(",");
+        // Jedes gegessene Tier mit "chomp" ersetzten
+        for (int i = 1; i < tiere.length-1; i++) {
+            if (fressen.containsKey(tiere[i]) && !Objects.equals(tiere[i], "chomp")) {
+                String[] essen = fressen.get(tiere[i]).split(" ");
+                for (String s : essen) {
+                    if (Objects.equals(tiere[i - 1], s)) {
+                        tiere[i - 1] = "chomp";
+                        i--;
+                    } else if (Objects.equals(tiere[i + 1], s)) {
+                        tiere[i + 1] = "chomp";
+                        i--;
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < tiere.length; i++) {
+
+        }
+
+        return new String[]{zoo, zoo};
+    }
 }
