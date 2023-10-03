@@ -227,27 +227,68 @@ public class Kata {
         fressen.put("panda", "leaves");
         fressen.put("sheep", "grass");
 
+        ArrayList<String> result = new ArrayList<>();
+        result.add(zoo);
         String[] tiere = zoo.split(",");
+        ArrayList<String> tiereList = new ArrayList<>();
+
+        tiereList.addAll(Arrays.asList(tiere));
+        while (tiereList.size() > 2) {
+            for (int i = 1; i < tiereList.size(); i++) {
+                if (fressen.containsKey(tiereList.get(i))) {
+                    String[] essen = fressen.get(tiere[i]).split(" ");
+                    for (String s : essen) {
+                        if (Objects.equals(tiereList.get(i - 1), s)) {
+                            result.add(tiereList.get(i) + " eats " + s);
+                            tiereList.remove(i-1);
+                        }
+                        else if (Objects.equals(tiereList.get(i + 1), s)) {
+                            result.add(tiereList.get(i) + " eats " + s);
+                            tiereList.remove(i+1);
+                        }
+                    }
+                }
+            }
+        }
+        if (fressen.containsKey(tiereList.get(0))) {
+            String[] essen = fressen.get(tiereList.get(0)).split(" ");
+            for (String s: essen) {
+                if (Objects.equals(tiereList.get(1), s)) {
+                    result.add(tiereList.get(0) + " eats " + s);
+                    result.add(tiereList.get(0));
+                }
+            }
+        } else if (fressen.containsKey(tiereList.get(1))) {
+            String[] essen = fressen.get(tiereList.get(1)).split(" ");
+            for (String s: essen) {
+                if (Objects.equals(tiereList.get(0), s)) {
+                    result.add(tiereList.get(1) + " eats " + s);
+                    result.add(tiereList.get(1));
+                }
+            }
+        }
+        return result.toArray(new String[0]);
+
         // Jedes gegessene Tier mit "chomp" ersetzten
-        for (int i = 1; i < tiere.length-1; i++) {
+        /* for (int i = 1; i < tiere.length-1; i++) {
             if (fressen.containsKey(tiere[i]) && !Objects.equals(tiere[i], "chomp")) {
                 String[] essen = fressen.get(tiere[i]).split(" ");
                 for (String s : essen) {
                     if (Objects.equals(tiere[i - 1], s)) {
+                        result.add(tiere[i] + " eats " + s);
                         tiere[i - 1] = "chomp";
                         i--;
                     } else if (Objects.equals(tiere[i + 1], s)) {
+                        result.add(tiere[i] + " eats " + s);
                         tiere[i + 1] = "chomp";
                         i--;
                     }
                 }
             }
-        }
+        } */
 
-        for (int i = 0; i < tiere.length; i++) {
 
-        }
-
-        return new String[]{zoo, zoo};
     }
+
+
 }

@@ -30,6 +30,6 @@ public class Main {
         // System.out.println(test.millerRabinTest(71));
         Kata test = new Kata();
 
-        System.out.println(test.add("1", "1"));
+        System.out.println(Arrays.toString(Kata.whoEatsWho("fox,bug,chicken,grass,sheep")));
     }
 }
