@@ -214,30 +214,29 @@ public class Kata {
         return Arrays.toString(result);
     }
     public static String[] whoEatsWho(final String zoo) {
-        HashMap<String, String> fressen = new HashMap<>();
-        fressen.put("antelope", "grass");
-        fressen.put("big-fish", "little-fish");
-        fressen.put("bug", "leaves");
-        fressen.put("bear", "big-fish bug chicken cow leaves sheep");
-        fressen.put("chicken", "bug");
-        fressen.put("cow", "grass");
-        fressen.put("fox", "chicken sheep");
-        fressen.put("giraffe", "leaves");
-        fressen.put("lion", "antelope cow");
-        fressen.put("panda", "leaves");
-        fressen.put("sheep", "grass");
+        TreeMap<String, List<String>> fressen = new TreeMap<>();
+        fressen.put("antelope", Arrays.asList("grass"));
+        fressen.put("big-fish", Arrays.asList("little-fish"));
+        fressen.put("bug", Arrays.asList("leaves"));
+        fressen.put("bear", Arrays.asList("big-fish", "bug", "chicken", "cow", "leaves", "sheep"));
+        fressen.put("chicken", Arrays.asList("bug"));
+        fressen.put("cow", Arrays.asList("grass"));
+        fressen.put("fox", Arrays.asList("chicken", "sheep"));
+        fressen.put("giraffe", Arrays.asList("leaves"));
+        fressen.put("lion", Arrays.asList("antelope", "cow"));
+        fressen.put("panda", Arrays.asList("leaves"));
+        fressen.put("sheep", Arrays.asList("grass"));
 
         ArrayList<String> result = new ArrayList<>();
         result.add(zoo);
         String[] tiere = zoo.split(",");
         ArrayList<String> tiereList = new ArrayList<>();
-
         tiereList.addAll(Arrays.asList(tiere));
+
         while (tiereList.size() > 1) {
             for (int i = 0; i < tiereList.size(); i++) {
                 if (fressen.containsKey(tiereList.get(i))) {
-                    String[] essen = fressen.get(tiereList.get(i)).split(" ");
-                    for (String s : essen) {
+                    for (String s : fressen.get(tiereList.get(i))) {
                         if (i > 0 && Objects.equals(tiereList.get(i - 1), s)) {
                             result.add(tiereList.get(i) + " eats " + s);
                             tiereList.remove(i-1);
