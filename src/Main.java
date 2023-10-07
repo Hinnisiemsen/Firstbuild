@@ -30,6 +30,8 @@ public class Main {
         // System.out.println(test.millerRabinTest(71));
         Kata test = new Kata();
 
-        System.out.println(Arrays.toString(Kata.whoEatsWho("fox,bug,chicken,grass,sheep,bear,giraffe,leaves")));
+        // System.out.println(Arrays.toString(Kata.whoEatsWho("fox,bug,chicken,grass,sheep,bear,giraffe,leaves")));
+        String[] directions = new String[]{"NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"};
+        System.out.println(Arrays.toString(Kata.dirReduc(directions)));
     }
 }

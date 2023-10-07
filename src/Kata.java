@@ -159,19 +159,20 @@ public class Kata {
         contra.put("SOUTH", "NORTH");
         contra.put("WEST", "EAST");
         contra.put("EAST", "WEST");
-        List<String> directions = Arrays.stream(arr).toList();
+        List<String> directions = new ArrayList<>(Arrays.stream(arr).toList());
 
         for (int i = 0; i < directions.size()-1; i++) {
             if (directions.get(i) == null) {
                 directions.remove(i);
+                i = -1;
+
             } else if (Objects.equals(directions.get(i + 1), contra.get(directions.get(i)))) {
                 directions.remove(i);
-                directions.remove(i+1);
+                directions.remove(i);
+                i = -1;
             }
-
-
         }
-        return new String[] {};
+        return directions.toArray(new String[0]);
     }
 
     public static String add(String a, String b) {
