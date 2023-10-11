@@ -28,10 +28,16 @@ public class Main {
         // DiffieHellmann test = new DiffieHellmann();
 
         // System.out.println(test.millerRabinTest(71));
-        Kata test = new Kata();
+        // Kata test = new Kata();
 
         // System.out.println(Arrays.toString(Kata.whoEatsWho("fox,bug,chicken,grass,sheep,bear,giraffe,leaves")));
-        String[] directions = new String[]{"NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"};
-        System.out.println(Arrays.toString(Kata.dirReduc(directions)));
+        //String[] directions = new String[]{"NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"};
+        // System.out.println(Arrays.toString(Kata.dirReduc(directions)));
+
+       /* String[] test = new String[] {"OXOOOX", "OXOXOO", "XXOOOX", "OXXXOO", "OOXOOX", "OXOOOO", "OOXOOX", "OOXOOO", "OXOOOO", "OXOOXX" };
+        System.out.println(Kata.landPerimeter(test));
+        Kata test2 = new Kata(); */
+        MultFun test3 = new MultFun();
+        System.out.println(test3.mult(200, 3));
     }
 }

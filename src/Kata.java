@@ -258,5 +258,78 @@ public class Kata {
 
     }
 
+    public static String landPerimeter(String[] arr) {
+        int perimeter = 0;
+        char[][] alleZiffern = new char[arr.length][arr[0].length()];
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length(); j++) {
+                alleZiffern[i][j] = arr[i].charAt(j);
+            }
+        }
+
+        for (int i = 0; i < alleZiffern.length; i++) {
+            for (int j = 0; j < arr[0].length(); j++) {
+                if (alleZiffern[i][j] == 'X') {
+                    // hoch schauen
+                    if (i == 0) {
+                        perimeter++;
+                    } else if (alleZiffern[i-1][j] != 'X') {
+                        perimeter++;
+                    }
+                    // runter schauen
+                    if (i == arr.length-1) {
+                        perimeter++;
+                    } else if (alleZiffern[i+1][j] != 'X') {
+                    }
+                    // links schauen
+                    if (j == 0) {
+                        perimeter++;
+                    } else if (alleZiffern[i][j-1] != 'X') {
+                        perimeter++;
+                    }
+                    // rechts schauen
+                    if (j == arr[0].length()-1) {
+                        perimeter++;
+                        j++;
+                    } else if (alleZiffern[i][j+1] != 'X') {
+                        perimeter++;
+                        j++;
+                    }
+                }
+            }
+        }
+        return String.valueOf(perimeter);
+    }
+
+    public static String landPerimeterHinni(String[] arr) {
+        int perimeter = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length(); j++) {
+                if (arr[i].charAt(j) == 'X' && (i == 0 || j == 0) ) {
+                    perimeter += 4;
+                }
+            }
+        }
+
+
+
+        return String.valueOf(perimeter);
+    }
+
+    public int getMin(int zahl1, int zahl2) {
+        if (zahl1 <= zahl2) {
+            return zahl1;
+        } else {
+            return zahl2;
+        }
+    }
+
+    // schreibe eine Minimum funktion von zwei Zahlen
+    public int getMin2(int zahl1, int zahl2) {
+        return Math.min(zahl1, zahl2);
+    }
+
 
 }
