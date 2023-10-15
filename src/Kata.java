@@ -433,21 +433,54 @@ public class Kata {
         List<Character> result = new ArrayList<>();
         List<Object> pointerTypeAndPos = getPointerTypeAndPos(maze);
         char pointer = (char) pointerTypeAndPos.get(0);
+        List<int[]> coordinates = new ArrayList<>();
         int xPos = (int) pointerTypeAndPos.get(1);
         int yPos = (int) pointerTypeAndPos.get(2);
-        enum direction{
-            UP,
-            DOWN,
-            LEFT,
-            RIGHT
+        coordinates.add(new int[]{xPos, yPos});
+
+        Stack<Integer> stackX = new Stack<>();
+        Stack<Integer> stackY = new Stack<>();
+
+        while (xPos != 0 && yPos != 0) {
+
+            switch (pointer) {
+                case '^':
+                    if (maze[xPos-1][yPos] == '#') {
+                        pointer = '>';
+                    } else {
+                        xPos -= 1;
+                        stackX.push(xPos);
+                        stackY.push(yPos);
+                        break;
+                    }
+                case '>':
+                    if (maze[xPos][yPos+1] == '#') {
+                        pointer = 'v';
+                    } else {
+                        yPos += 1;
+                        stackX.push(xPos);
+                        stackY.push(yPos);
+                        break;
+                    }
+                case 'v':
+                    if (maze[xPos+1][yPos] == '#') {
+                        pointer = '<';
+                    } else {
+                        xPos += 1;
+                        stackX.push(xPos);
+                        stackY.push(yPos);
+                        break;
+                    }
+                case '<':
+                    if (maze[xPos][yPos-1] == '#' || stack.contains()) {
+                        pointer = '^';
+                    } else {
+                        yPos -= 1;
+                        break;
+                    }
+            }
         }
 
-        Stack<Character> stack = new Stack<>();
-
-        switch (pointer) {
-            case '^':
-
-        }
 
 
         return result;
