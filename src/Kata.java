@@ -307,9 +307,24 @@ public class Kata {
 
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[0].length(); j++) {
-                if (arr[i].charAt(j) == 'X' && (i == 0 || j == 0) ) {
-                    perimeter += 4;
+                if (i != 0 && j != 0) {
+                    if (arr[i].charAt(j) == 'X') {
+                        if (arr[i-1].charAt(j) == 'X' && arr[i].charAt(j-1) == 'X') {
+                            perimeter += 2;
+                        }
+                        if (arr[i].charAt(j-1) == 'X' && arr[i].charAt(j-1) == 'O') {
+                            perimeter += 3;
+                        }
+                        if (arr[i].charAt(j-1) == 'X' && arr[i-1].charAt(j) == 'O') {
+                            perimeter += 3;
+                        } else {
+                            perimeter += 4;
+                        }
+                    }
+                } else {
+
                 }
+
             }
         }
 
@@ -330,6 +345,130 @@ public class Kata {
     public int getMin2(int zahl1, int zahl2) {
         return Math.min(zahl1, zahl2);
     }
+    public static String decomp(int n) {
+        int prime = 2;
+        int exponent = 0;
+        String result = "";
+        int factorial = 1;
+        boolean isPrime;
+
+        for (int i = n; i > 0; i--) {
+            factorial *= i;
+        }
+
+        while (factorial != 1) {
+            if (factorial%prime == 0) {
+                factorial /= prime;
+                exponent++;
+            }
+            result = result.concat(prime + "^" + exponent + " * ");
+
+            prime++;
+            while (!isPrime(prime)) {
+                prime++;
+            }
+        }
+
+        return result.substring(0, result.length()-3);
+    }
+    public static boolean isPrime(int n) {
+        boolean[] sieve = new boolean[n + 1];
+
+        for (int i = 2; i * i <= n; i++) {
+            if (!sieve[i]) {
+                for (int j = i * i; j <= n; j += i) {
+                    sieve[j] = true;
+                }
+            }
+        }
+
+        return !sieve[n];
+    }
+
+    public static long[] productFib(long prod) {
+        long fib1 = 1;
+        long fib2 = 1;
+        long temp = 0;
+        long[] result = new long[3];
+
+        do {
+            if (fib1*fib2 == prod) {
+                result[0] = fib1;
+                result[1] = fib2;
+                result[2] = 1;
+                return result;
+            }
+            temp = fib1;
+            fib1 = fib2;
+            fib2 += temp;
+        } while (fib1*fib2 <= prod);
+        result[0] = fib1;
+        result[1] = fib2;
+        return result;
+    }
+/*
+    public static String orderWeight(String string) {
+        String[] zahlenString = string.split(" ");
+        HashMap<Integer, Integer> zahlen = new HashMap<>();
+
+        for (String s : zahlenString) {
+            int quersumme = 0;
+            int tempzahl = Integer.parseInt(s);
+            while (tempzahl > 0) {
+                quersumme += tempzahl % 10;
+                tempzahl /= 10;
+            }
+            zahlen.put(Integer.parseInt(s), quersumme);
+        }
+        List<Integer> zahlenlist = new ArrayList<>(zahlen.values().stream().toList());
+        Collections.sort(zahlenlist);
+
+        zahlen.c
+
+
+    }
+
+*/
+    public static List<Character> escape(char[][] maze) {
+        List<Character> result = new ArrayList<>();
+        List<Object> pointerTypeAndPos = getPointerTypeAndPos(maze);
+        char pointer = (char) pointerTypeAndPos.get(0);
+        int xPos = (int) pointerTypeAndPos.get(1);
+        int yPos = (int) pointerTypeAndPos.get(2);
+        enum direction{
+            UP,
+            DOWN,
+            LEFT,
+            RIGHT
+        }
+
+        Stack<Character> stack = new Stack<>();
+
+        switch (pointer) {
+            case '^':
+
+        }
+
+
+        return result;
+    }
+
+    public static List<Object> getPointerTypeAndPos(char[][] maze) {
+        List<Object> mixedList = new ArrayList<>();
+        for (int i = 0; i < maze.length; i++) {
+            for (int j = 0; j < maze[0].length; j++) {
+                switch (maze[i][j]) {
+                    case '^', '<', '>', 'v':
+                        mixedList.add(maze[i][j]);
+                        mixedList.add(i);
+                        mixedList.add(j);
+                        return mixedList;
+                }
+            }
+        }
+        throw new RuntimeException("No pointer found!");
+    }
+
 
 
 }

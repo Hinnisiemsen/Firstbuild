@@ -37,7 +37,30 @@ public class Main {
        /* String[] test = new String[] {"OXOOOX", "OXOXOO", "XXOOOX", "OXXXOO", "OOXOOX", "OXOOOO", "OOXOOX", "OOXOOO", "OXOOOO", "OXOOXX" };
         System.out.println(Kata.landPerimeter(test));
         Kata test2 = new Kata(); */
-        MultFun test3 = new MultFun();
-        System.out.println(test3.mult(200, 3));
+     //   MultFun test3 = new MultFun();
+        // System.out.println(test3.mult(200, 3));
+      //  System.out.println(Elements.doSomething(23, 5));
+     /*   int a = 3;
+        if (a % 2 != 0) {
+            a = a - 5;
+            if (a < 0) {
+                a *= -1;
+            }
+            if (a % 2 != 1) {
+                a /= 2;
+            } else {
+                a *= 2;
+            }
+        }
+        System.out.println(a);
+
+        boolean nichtA = true;
+        boolean b = true;
+        System.out.println((nichtA & !b) | (!nichtA & b));
+
+        //System.out.println(Arrays.toString(Elements.fill(7)));
+*/
+       // System.out.println(Elements.fermatTest());
+        System.out.println(Arrays.toString(Kata.productFib(4895)));
     }
 }
